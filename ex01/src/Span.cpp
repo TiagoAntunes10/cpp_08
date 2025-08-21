@@ -6,13 +6,11 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:33:11 by tialbert          #+#    #+#             */
-/*   Updated: 2025/08/20 16:04:23 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:22:14 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/includes.hpp"
-#include <algorithm>
-#include <exception>
 
 Span::Span(void) {
   _filled = 0;
@@ -55,36 +53,34 @@ void Span::addNumber(int n) {
   _filled++;
 }
 
-// TODO: Correct this function
 int Span::shortestSpan(void) {
   if (_filled <= 1)
     throw std::exception();
 
-  int *max = std::max_element(_arr, _arr + _filled - 1);
-  int *min = std::min_element(_arr, _arr + _filled - 1);
+  int *cpy = new int[_filled];
+  int diff = INT_MAX;
 
-  return (*max - *min);
+  std::copy(_arr, _arr + _filled, cpy);
+  std::sort(cpy, cpy + _filled);
+
+  for (unsigned int i = 1; i < _filled; i++) {
+    if (diff > cpy[i] - cpy[i - 1]) {
+      diff = cpy[i] - cpy[i - 1];
+    }
+    if (diff == 0)
+      break;
+  }
+
+  delete[] cpy;
+  return (diff);
 }
 
 int Span::longestSpan(void) {
   if (_filled <= 1)
     throw std::exception();
 
-  int *max = std::max_element(_arr, _arr + _filled - 1);
-  int *min = std::min_element(_arr, _arr + _filled - 1);
+  int *max = std::max_element(_arr, _arr + _filled);
+  int *min = std::min_element(_arr, _arr + _filled);
 
   return (*max - *min);
-}
-
-template <class T> void Span::fillSpan(T first, T last) {
-  unsigned int array_size = last - first;
-
-  if (array_size > _size || _filled == _size)
-    throw std::exception();
-  for (unsigned int i = 0; i < array_size; i++) {
-    if (_filled >= _size)
-      throw std::exception();
-    _arr[_filled] = *(first + i);
-    _filled++;
-  }
 }

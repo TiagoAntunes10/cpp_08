@@ -1,11 +1,11 @@
 LIB = ./Include
 PRE = ./src/
 
-SOURCE = main.cpp
+SOURCE = main.cpp Span.cpp
 
 SOURCES = ${addprefix $(PRE), $(SOURCE)}
 
-NAME = easyfind
+NAME = span
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

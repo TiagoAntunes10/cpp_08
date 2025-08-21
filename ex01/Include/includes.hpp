@@ -23,6 +23,8 @@
 #define WHITE "\033[37m"
 
 #include "Span.hpp"
+#include <algorithm>
+#include <climits>
 #include <exception>
 
 #endif
