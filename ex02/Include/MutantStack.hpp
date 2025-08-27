@@ -20,14 +20,11 @@ template <class T, class Container = std::stack<T> >
 class MutantStack : public std::stack<T> {
 public:
   typedef typename std::deque<T>::iterator iterator;
+  typedef typename std::deque<T>::reverse_iterator reverse_iterator;
 
   iterator begin(void) { return (Container::c.begin()); };
   iterator end(void) { return (Container::c.end()); };
-  iterator rbegin(void) { return (Container::c.rbegin()); };
-  iterator rend(void) { return (Container::c.rend()); };
-  iterator cbegin(void) { return (Container::c.cbegin()); };
-  iterator cend(void) { return (Container::c.cend()); };
-  iterator crbegin(void) { return (Container::c.crbegin()); };
-  iterator crend(void) { return (Container::c.crend()); };
+  reverse_iterator rbegin(void) { return (Container::c.rbegin()); };
+  reverse_iterator rend(void) { return (Container::c.rend()); };
 };
 #endif
