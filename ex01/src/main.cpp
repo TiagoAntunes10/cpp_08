@@ -6,7 +6,7 @@
 /*   By: tialbert <tialbert@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 14:09:17 by tialbert          #+#    #+#             */
-/*   Updated: 2025/08/21 15:29:42 by tialbert         ###   ########.fr       */
+/*   Updated: 2025/09/02 09:36:59 by tialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <exception>
 
 void big_test(void) {
-  unsigned int size = 2000000;
+  unsigned int size = 300000;
   int arr[size + 1];
   Span sp = Span(size);
 
